@@ -12,7 +12,7 @@ class Auth {
 
     $token = array(
       'iat'  => time(),         // Issued at: time when the token was generated
-      'jti'  => base64_encode(mcrypt_create_iv(32)),          // Json Token Id: an unique identifier for the token
+      'jti'  => base64_encode(random_bytes (32)),          // Json Token Id: an unique identifier for the token
       'iss'  => "test.com",       // Issuer
       'nbf'  => time(),        // Not before
       'exp'  => time() + 380,           // Expire
