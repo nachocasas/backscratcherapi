@@ -19,17 +19,13 @@ class Api {
   }
   
   public static function get($headers){
-    if(!Auth::isAuth($headers['Authorization'])){
-      return array('error' => 'Invalid Token');
-    }
+
     $result = ScratcherService::getAll();
     return $result;
   }
   
   public static function post($data, $headers){
-    if(!Auth::isAuth($headers['Authorization'])){
-      return array('error' => 'Invalid Token');
-    }
+
     $validate = self::validate($data, 'post');
     $result = $validate === true ? ScratcherService::add($data) : array('error' => $validate);
 
@@ -37,18 +33,14 @@ class Api {
   }
 
   public static function put($data, $headers){
-    if(!Auth::isAuth($headers['Authorization'])){
-      return array('error' => 'Invalid Token');
-    }
+
     $validate = self::validate($data, 'put');
     $result = $validate === true ? ScratcherService::update($data) : array('error' => $validate);
     return $result;
   }
 
   public static function delete($data, $headers){
-    if(!Auth::isAuth($headers['Authorization'])){
-      return array('error' => 'Invalid Token');
-    }
+   
     $validate = self::validate($data, 'delete');
     $result = $validate === true ? ScratcherService::delete($data) : array('error' => $validate);
     return $result;
@@ -81,15 +73,15 @@ if($requestPath[0] == 'getAuth'){
 
 } elseif($requestPath[0] == 'scratchers'){
 
-  $headers = apache_request_headers();
+  $headers = request_headers();
 
   print_r($headers);
-  if(!$headers['Authorization']){
+  if(!$headers['AUTHORIZATION']){
     echo json_encode(array('error' => 'Auth header missing'));
     exit();
   }
 
-  if(!Auth::isAuth($headers['Authorization'])){
+  if(!Auth::isAuth($headers['AUTHORIZATION'])){
     echo json_encode(array('error' => 'Invalid Token'));
     exit();
   }
