@@ -1,0 +1,60 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "$id": "/properties/id",
+      "required" : true,
+      "type": "integer",
+      "title": "The Id ",
+      "default": "",
+      "examples": [
+        "1"
+      ]
+    },
+    "name": {
+      "$id": "/properties/name",
+      "required" : false,
+      "type": "string",
+      "title": "The Name Schema ",
+      "default": "",
+      "examples": [
+        "test"
+      ]
+    },
+    "description": {
+      "$id": "/properties/description",
+      "required" : false,
+      "type": "string",
+      "title": "The Description Schema ",
+      "default": "",
+      "examples": [
+        "This is a nice description"
+      ]
+    },
+    "size": {
+      "$id": "/properties/size",
+      "required" : false,
+      "type": "string",
+      "title": "The Size Schema ",
+      "default": "",
+      "enum": ["S", "M", "L", "XL"],
+      "examples": [
+        "XL"
+      ]
+    },
+    "cost": {
+      "$id": "/properties/cost",
+      "required" : false,
+      "type": "string",
+      "title": "The Cost Schema ",
+      "default": "",
+      "examples": [
+        "20.20"
+      ]
+    }
+  },
+  "additionalProperties" : false
+}

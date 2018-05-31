@@ -1,0 +1,19 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "$id": "/properties/id",
+      "required" : true,
+      "type": "integer",
+      "title": "The Id ",
+      "default": "",
+      "examples": [
+        "1"
+      ]
+    }
+  },
+  "additionalProperties" : false
+}
