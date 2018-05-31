@@ -82,6 +82,8 @@ if($requestPath[0] == 'getAuth'){
 } elseif($requestPath[0] == 'scratchers'){
 
   $headers = apache_request_headers();
+
+  print_r($headers);
   if(!$headers['Authorization']){
     echo json_encode(array('error' => 'Auth header missing'));
     exit();
