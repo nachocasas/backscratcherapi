@@ -1,11 +1,9 @@
-CREATE DATABASE scatchbling;
+CREATE TYPE size_type AS ENUM('XL','L','M','S');
 
-USE scatchbling;
-
-CREATE TABLE Scratchers (
-`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-item_name varchar(45) ,
-item_description varchar(200) ,
-item_size ENUM('XL','L','M','S'),
-item_cost DECIMAL(6,2) 
-)ENGINE=InnoDB;
+CREATE TABLE Scratchers(
+  ID SERIAL PRIMARY KEY     NOT NULL,
+  item_name VARCHAR(50)     NOT NULL,
+  item_description VARCHAR(200) NOT NULL,
+  item_size size_type,
+  item_cost DECIMAL(6,2) 
+);

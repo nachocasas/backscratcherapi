@@ -12,6 +12,10 @@ class ScratcherService {
       $result = $dao->getAll();
       $scratchers = array();
 
+      if(!$result){
+        return $scratchers;
+      }
+
       foreach ($result as $item){
         $scratcher = new Scratcher($item);
         $scratchers[] = $scratcher->getValues();

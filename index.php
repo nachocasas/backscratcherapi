@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: *");
 
@@ -75,7 +73,6 @@ if($requestPath[0] == 'getAuth'){
 
   $headers = request_headers();
 
-  print_r($headers);
   if(!$headers['AUTHORIZATION']){
     echo json_encode(array('error' => 'Auth header missing'));
     exit();

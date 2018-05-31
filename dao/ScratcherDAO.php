@@ -40,7 +40,7 @@ class ScratcherDAO {
     $size = $this->db->escapeStr($values['size']);
     $cost = $values['cost'];
 
-    $query = "INSERT INTO Scratchers (item_name, item_description, item_size, item_cost)VALUES('%s','%s', '%s', '%d')";
+    $query = "INSERT INTO Scratchers (item_name, item_description, item_size, item_cost)VALUES('%s','%s', '%s', '%d') RETURNING id";
 
     $query = sprintf($query, $name, $description, $size, $cost);
 
