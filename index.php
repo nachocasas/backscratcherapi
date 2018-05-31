@@ -6,6 +6,7 @@ header("Access-Control-Allow-Origin: *");
 
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__.'/service/ScratcherService.php';
+require_once __DIR__.'/lib/utils.php';
 require_once __DIR__.'/lib/Auth.php';
 
 use JsonSchema\Validator;
