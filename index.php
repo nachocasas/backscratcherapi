@@ -16,7 +16,7 @@ class Api {
     $token = Auth::getToken($data['apiId']);
     return array('token' => $token);
   }
-  
+
   public static function get($headers){
 
     $result = ScratcherService::getAll();
@@ -37,7 +37,7 @@ class Api {
     $result = $validate === true ? ScratcherService::update($data) : array('error' => $validate);
     return $result;
   }
-
+  
   public static function delete($data, $headers){
    
     $validate = self::validate($data, 'delete');
@@ -85,15 +85,83 @@ if($requestPath[0] == 'getAuth'){
   }
 
   switch($_SERVER['REQUEST_METHOD']){
+
+     /*
+    * Method GET
+    * Sample Request: <empty>
+    * Sample Response:
+    * [{
+    *      "id": "2",
+    *      "name": "samsung3",
+    *      "description": "This is a nice description",
+    *      "size": "XL",
+    *      "cost": "240.00"
+    *  }]
+    * 
+    */
     case 'GET':
       $result = Api::get($headers);
     break;
+
+    /*
+    * Method POST
+    * Sample Request: 
+    *{
+    *      "id": "2",
+    *      "name": "samsung3",
+    *      "description": "This is a nice description",
+    *      "size": "XL",
+    *      "cost": "240.00"
+    *  }
+    *
+    * Sample Response:
+    * {
+    *      "id": 1 <inserted id>
+    *  }
+    * 
+    */
     case 'POST':
       $result = Api::post($jsonRequest, $headers);
     break;
+
+    /*
+    * Method PUT
+    * Sample Request: 
+    * {
+    *      "id": "1",
+    *      "name": "test",
+    *      "description": "This an edited description",
+    *  }
+    *
+    * Sample Response:
+
+    * {
+    *      "id": "1",
+    *      "name": "test",
+    *      "description": "This an edited description",
+    *      "size": "XL",
+    *      "cost": "240.00"
+    *  }
+    * 
+    */
     case 'PUT': 
       $result = Api::put($jsonRequest, $headers);
     break;
+
+    /*
+    * Method DELETE
+    * Sample Request: 
+    * {
+    *      "id": 1
+    *  }
+    *
+    * Sample Response:
+
+    * {
+    *      "message": "Item deleted"
+    *  }
+    * 
+    */
     case 'DELETE':
       $result = Api::delete($jsonRequest, $headers);
     break;
